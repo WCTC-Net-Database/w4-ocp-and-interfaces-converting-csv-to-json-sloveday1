@@ -11,7 +11,7 @@ class Program
 
     static void Main()
     {
-        string filePath = "input.csv"; // Default to CSV file
+        string filePath = "Files/input.csv"; // Default to CSV file
         fileHandler = new CsvFileHandler(); // Default to CSV handler
         characters = fileHandler.ReadCharacters(filePath);
 
@@ -59,6 +59,28 @@ class Program
         // TODO: Implement logic to add a new character
         // Prompt for character details (name, class, level, hit points, equipment)
         // Add the new character to the characters list
+        
+        Console.WriteLine("What is the characters name:");
+        string name = Console.ReadLine();
+        Console.WriteLine("What is the characters class:");
+        string characterClass = Console.ReadLine();
+        Console.WriteLine("What is the characters level:");
+        int level = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("What is the characters hit points:");
+        int hitPoints = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Equipment 1:");
+        string equipment1 = Console.ReadLine();
+        Console.WriteLine("Equipment 2:");
+        string equipment2 = Console.ReadLine();
+        Console.WriteLine("Equipment 3:");
+        string equipment3 = Console.ReadLine();
+
+        List<string> equipment = new List<string>(){equipment1, equipment2, equipment3};
+        
+        Character character = new Character()
+            { Name = name, Class = characterClass, Level = level, HP = hitPoints, Equipment = equipment };
+            
+        characters.Add(character);
     }
 
     static void LevelUpCharacter()
@@ -70,8 +92,8 @@ class Program
         if (character != null)
         {
             // TODO: Implement logic to level up the character
-            // character.Level++;
-            // Console.WriteLine($"Character {character.Name} leveled up to level {character.Level}!");
+            character.Level++;
+            Console.WriteLine($"Character {character.Name} leveled up to level {character.Level}!");
         }
         else
         {
